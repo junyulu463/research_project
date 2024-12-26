@@ -1,0 +1,161 @@
+.airbnb-style-calendar {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  /* Buttons at the top */
+  .calendar-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  .calendar-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  .calendar-buttons button.active {
+    background-color: #4caf50;
+    color: white;
+    border-color: #4caf50;
+    font-weight: bold;
+  }
+  
+  /* Display of chosen dates */
+  .selected-dates {
+    margin: 20px 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Month nav */
+  .calendar-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+  }
+  .calendar-navigation button {
+    background-color: white;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .calendar-navigation button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Two months side by side */
+  .calendar-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .calendar-month {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  /* The calendar grid (7 columns: Sun-Sat, or however you label them) */
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  /* Base day circle */
+  .calendar-day {
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+    width: 30px;
+    margin: auto;
+    border-radius: 50%;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  /* Booked = red circle */
+  .calendar-day.booked {
+    background-color: #f44336;
+    color: white;
+    cursor: not-allowed;
+  }
+  
+  /* Disabled day = gray text, no background */
+  .calendar-day.disabled {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+  }
+  
+  /* The “range” days get a gray circle */
+  .calendar-day.range {
+    position: relative; /* for bridging bars */
+    background-color: #e0e0e0;
+  }
+  
+  /* If you want a lighter circle for hover preview */
+  .calendar-day.range-preview {
+    background-color: #f0f0f0;
+  }
+  
+  /* Keep start/end days green! */
+  .calendar-day.range-start,
+  .calendar-day.range-end {
+    background-color: #388e3c !important;
+    color: white !important;
+    font-weight: bold;
+  }
+  
+  /* Bridging bar from this day to the next, only if not .range-end or .end-of-row */
+  .calendar-day.range:not(.range-end):not(.end-of-row)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50%;
+    width: 55px;  /* tweak to match your spacing */
+    height: 30px; /* about the circle’s diameter */
+    background-color: #e0e0e0;
+    z-index: -1;
+  }
+  
+  /* 
+     "end-of-row" means no bridging from this day,
+     typically if the next day isn't in range or it's a row boundary 
+  */
+  
+  /* Hover effect for normal days */
+  .calendar-day:hover:not(.disabled):not(.booked) {
+    background-color: #e0f7fa;
+  }
+  
+  /* Submit button at bottom */
+  .submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+  
